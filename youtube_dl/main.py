@@ -11,7 +11,7 @@ def download(link):
         print("Failed")
   
 def main():
-    url = input('Enter your the url: ')
+    url = input('Enter the url: ')
     download(url)
 
 main()
