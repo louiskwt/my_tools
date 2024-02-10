@@ -1,6 +1,5 @@
 from pytube import YouTube
 
-
 def download(link):
     yt = YouTube(link)
     yt = yt.streams.get_highest_resolution()
@@ -14,4 +13,5 @@ def main():
     url = input('Enter the url: ')
     download(url)
 
-main()
+if __name__ == "__main__":
+    main()
