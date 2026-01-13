@@ -1,10 +1,22 @@
-import asyncio
+import argparse, asyncio
+import os
 from bilix.sites.bilibili import DownloaderBilibili
 
+parser = argparse.ArgumentParser(description="Download videos from Bilibili")
+parser.add_argument("-v", "--video", help="Get a single video", type=str)
+parser.add_argument("-s", "--series", help="Get a series", type=str)
+
+os.makedirs(os.path.dirname("videos"), exist_ok=True)
+
 async def main():
-    url = input("Enter a series to download: ")
+    args = parser.parse_args()
     async with DownloaderBilibili() as d:
-        await d.get_series(url, "./videos")
+        if args.video:
+            await d.get_video(args.video, "videos")
+        elif args.series:
+            await d.get_series(args.series, "videos")
+        else:
+            parser.print_help()
 
 
 if __name__ == '__main__':
