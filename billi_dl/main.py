@@ -6,7 +6,7 @@ parser = argparse.ArgumentParser(description="Download videos from Bilibili")
 parser.add_argument("-v", "--video", help="Get a single video", type=str)
 parser.add_argument("-s", "--series", help="Get a series", type=str)
 
-os.makedirs(os.path.dirname("videos"), exist_ok=True)
+os.makedirs("videos", exist_ok=True)
 
 async def main():
     args = parser.parse_args()
