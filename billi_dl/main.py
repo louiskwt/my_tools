@@ -12,6 +12,7 @@ async def main():
     args = parser.parse_args()
     try:
         async with DownloaderBilibili() as d:
+            d.progress.start()
             if args.video:
                 await d.get_video(args.video, "videos")
             elif args.series:
