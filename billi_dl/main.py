@@ -10,13 +10,16 @@ os.makedirs("videos", exist_ok=True)
 
 async def main():
     args = parser.parse_args()
-    async with DownloaderBilibili() as d:
-        if args.video:
-            await d.get_video(args.video, "videos")
-        elif args.series:
-            await d.get_series(args.series, "videos")
-        else:
-            parser.print_help()
+    try:
+        async with DownloaderBilibili() as d:
+            if args.video:
+                await d.get_video(args.video, "videos")
+            elif args.series:
+                await d.get_series(args.series, "videos")
+            else:
+                parser.print_help()
+    except Exception as e:
+        print(f"Error when downloading: {e}")
 
 
 if __name__ == '__main__':
