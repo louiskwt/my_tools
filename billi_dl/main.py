@@ -14,9 +14,9 @@ async def main():
         async with DownloaderBilibili() as d:
             d.progress.start()
             if args.video:
-                await d.get_video(args.video, "videos")
+                await d.get_video(args.video, "videos", quality=0)
             elif args.series:
-                await d.get_series(args.series, "videos")
+                await d.get_series(args.series, "videos", quality=0)
             else:
                 parser.print_help()
     except Exception as e:
