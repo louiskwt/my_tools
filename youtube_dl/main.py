@@ -6,8 +6,8 @@ def download(link):
     try: 
         yt.download()
         print("Download Completed")
-    except:
-        print("Failed")
+    except Exception as e:
+        print(f"Failed to download due to error: {e}")
   
 def main():
     url = input('Enter the url: ')
