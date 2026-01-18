@@ -1,7 +1,8 @@
 from pytubefix import YouTube
+from pytubefix.cli import on_progress
 
 def download(link):
-    yt = YouTube(link)
+    yt = YouTube(link, on_progress_callback=on_progress)
     yt = yt.streams.get_highest_resolution()
     try: 
         yt.download()
