@@ -1,4 +1,4 @@
-from pytube import YouTube
+from pytubefix import YouTube
 
 def download(link):
     yt = YouTube(link)
