@@ -1,11 +1,15 @@
 from pytubefix import YouTube
 from pytubefix.cli import on_progress
+from pathlib import Path
+
+VIDEO_PATH = "videos"
+Path(VIDEO_PATH).mkdir(parents=True, exist_ok=True)
 
 def download(link):
     yt = YouTube(link, on_progress_callback=on_progress)
     yt = yt.streams.get_highest_resolution()
     try: 
-        yt.download()
+        yt.download(output_path=VIDEO_PATH)
         print("Download Completed")
     except Exception as e:
         print(f"Failed to download due to error: {e}")
